@@ -11,15 +11,25 @@ function setup() {
   
   cam = createCapture(VIDEO);
   
+      ctx = getAudioContext();
+    ctxOn = createButton('sT̾a̾r̾t');
+    ctxOn.position(windowWidth/4, windowHeight/2);
+    ctxOn.size(windowWidth/8, windowHeight/14);
+    ctxOn.mousePressed(() => {
+    ctx.resume().then(() => {
+    console.log('Audio Context is now ON');
+        ctxOn.hide();
+    });
+    });
+  
   mic = new p5.AudioIn();
   mic.start();
   
   background(251, 193, 147);
   
-  
-  
-  
-  }
+}
+
+
 
 function draw() {
   
