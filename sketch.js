@@ -1,6 +1,10 @@
 var cam;
 var x=0;
 var y=0;
+var xCd;
+var yCd;
+var sxCd;
+var micLevel;
 
 function setup() {
   
@@ -11,21 +15,13 @@ function setup() {
   
   cam = createCapture(VIDEO);
   
-      ctx = getAudioContext();
-    ctxOn = createButton('sT̾a̾r̾t');
-    ctxOn.position(windowWidth/4, windowHeight/2);
-    ctxOn.size(windowWidth/8, windowHeight/14);
-    ctxOn.mousePressed(() => {
-    ctx.resume().then(() => {
-    console.log('Audio Context is now ON');
-        ctxOn.hide();
-    });
-    });
-  
   mic = new p5.AudioIn();
-  mic.start();
   
   background(251, 193, 147);
+  
+
+  AudioStart();
+  CaixaDialogo();
   
 }
 
@@ -48,7 +44,7 @@ function draw() {
   
   micLevel = mic.getLevel();
   
-  print(micLevel);
+  //print(micLevel);
    
   if (mouseIsPressed || micLevel > 0.01) {x = x+2};
   
@@ -56,9 +52,64 @@ function draw() {
   
   if (y > hC) { x = 0; y = 0};
   
+   
+  
+  
+}
+
+
+function CaixaDialogo() { 
+  
+  let xCd = windowWidth/4 - 80; 
+  let yCd = windowHeight/4 - 80; 
+  let sxCd = windowWidth*3/4;
+  let syCd = windowHeight/3 + 50;
+  
+  //strokeWeight(0);
+  
+  //fill('black');
+  
+  //rect(xCd, yCd, sxCd, syCd);
+  
+
+  push();
 
   
+ // rectMode(CENTER);
+ 
+  noStroke();
   
- // print(voz);
+  fill('black');
+  
+  textSize(16);
+  
+  textFont('verdana');
+  
+  textAlign(CENTER, TOP);
+  
+  text('Bem vinde! Para interagir, autorize o uso da sua câmera e microfone. A câmera frontal do seu dispositivo deve estar diretamente à sua frente. Clique em qualquer parte da tela para acionar a SLITA, caso não queira emitir som. Obrigada pela visita!', xCd, yCd * 4, sxCd);
+  
+  
+  pop();
+    
+}
+
+function AudioStart() {
+  
+  let xCd = windowWidth/4 - 80; 
+  let yCd = windowHeight/4 - 80; 
+  let sxCd = windowWidth*3/4;
+  let syCd = windowHeight/3 + 50;
+  
+  botao = createButton('CLIQUE P/ ACIONAR MICROFONE');
+  //botao.position (3*xCd/2, 3*yCd);
+  botao.position(windowWidth/2 - 65, 3*yCd);
+  //botao.position(CENTER, 3*yCd);
+  botao.mousePressed(() => {
+    //mic = new p5.AudioIn();
+    userStartAudio();
+    mic.start();
+    botao.hide();
+  });
   
 }
