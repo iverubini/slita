@@ -87,7 +87,7 @@ function CaixaDialogo() {
   
   textAlign(CENTER, TOP);
   
-  text('Bem vinde! Para interagir, por favor autorize o uso da sua câmera e microfone. Procure ficar no centro da captação da câmera frontal do seu dispositivo. Clique em qualquer parte da tela para acionar a SLITA, caso não queira emitir som. Obrigada pela visita!', xCd, yCd * 4, sxCd);
+  text('Bem vinde! Para interagir, por favor autorize o uso da sua câmera e microfone. Pode ser que leve uns segundos após o clique no botão acima para o seu navegador pedir autorização do uso do microfone. Procure ficar no centro da captação da câmera frontal do seu dispositivo. Clique em qualquer parte da tela para acionar a SLITA, caso não queira emitir som. Obrigada pela visita!', xCd, yCd * 4, sxCd);
   
   
   pop();
